@@ -20,6 +20,10 @@ const (
 
 type Option func(f *finder) error
 
+// New provides the construction of finder instance.
+// first argument is fs.FS type
+// second is the list of time options letting the user specify the time
+// as a combination of years, months, days, hours and minutes
 func New(fsys fs.FS, opts ...Option) (finder, error) {
 	f := finder{
 		fsys:        fsys,
@@ -76,6 +80,8 @@ type Result struct {
 }
 type Results []Result
 
+// Finds files older than the time options specified
+// in local file system.
 func (f finder) OlderThan() (Results, error) {
 
 	var results Results
@@ -93,7 +99,6 @@ func (f finder) OlderThan() (Results, error) {
 			return fs.SkipDir
 		}
 		if finfo.ModTime().Before(f.currentTime) {
-			//fmt.Println(finfo.Name(), finfo.ModTime(), path, f.currentTime)
 			results = append(results, Result{Path: path, ModTime: finfo.ModTime()})
 		}
 		return nil
