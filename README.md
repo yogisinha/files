@@ -65,3 +65,10 @@ func main() {
 }
 
 ```
+
+### cmd/main.go provides a CLI to find the older files
+#### To find the files older than 10 days, 5 hrs
+```sh
+$ go run cmd/main.go -h  // for cmd line switches help
+$ go run cmd/main.go -d=10 -h=5 /path/to/folder
+```
