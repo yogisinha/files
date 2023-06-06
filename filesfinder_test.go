@@ -8,27 +8,6 @@ import (
 	"github.com/yogisinha/filesfinder"
 )
 
-/*
-command line switches  ,
-	specify time
-	-p folderpath
-  -t 30days,  15mins, hours, years
-  -t go lang time format  // older than this timeformat
-  -u 4 -d days   // years, weeks, days, hrs, mins, secs, millis
-  glob search on cmd line. by default it will search all files
-  should be able to provide the function to filter for a specific files
-  only one of time switch should be provided
-  -v verbose
-  // embedding code with testable examples
-  // publishing on go.pkg.dev
-
-  // what to check
-  proper switch should be provided
-  valid folder path
-*/
-
-// test not giving the start path
-
 // test File system. file entries are sorted by mod time descending
 var testFileSystem = fstest.MapFS{
 	"a/b/c": &fstest.MapFile{
